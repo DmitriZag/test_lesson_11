@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group = 'qa.guru'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testImplementation 'com.codeborne:selenide:6.16.0'
+    testImplementation 'commons-io:commons-io:2.15.1'
+    testImplementation 'com.codeborne:pdf-test:1.5.0'
+    testImplementation 'com.codeborne:xls-test:1.4.3'
+    testImplementation 'com.opencsv:opencsv:5.9'
+    testImplementation 'com.fasterxml.jackson.core:jackson-core:2.13.1'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+test {
+    useJUnitPlatform()
+
+}
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
