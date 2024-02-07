@@ -9,8 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsonParsingTest {
     private final ClassLoader cl = JsonParsingTest.class.getClassLoader();
@@ -22,10 +21,12 @@ public class JsonParsingTest {
             ObjectMapper objectMapper = new ObjectMapper();
             AboutVga aboutVga = objectMapper.readValue(reader, AboutVga.class);
 
-            assertEquals("Asus", aboutVga.getBrand());
-            assertEquals("RTX4090", aboutVga.getModel());
-            assertEquals(24, aboutVga.getMemory());
-            assertArrayEquals(new String[]{"gaming", "working"}, aboutVga.getPurpose().toArray());
+            assertThat(aboutVga.getBrand()).isEqualTo("Asus");
+            assertThat(aboutVga.getModel()).isEqualTo("RTX4090");
+            assertThat(aboutVga.getMemory()).isEqualTo(24);
+            assertThat(aboutVga.getPurpose().toArray())
+                    .isEqualTo(new String[]{"gaming", "working"
+                    });
         }
     }
 }
